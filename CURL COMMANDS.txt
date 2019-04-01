@@ -1,0 +1,28 @@
+
+Request with only MANDATORY FIELD
+curl -i -H "Content-Type: application/json" -X GET -d '{"search":{"amazon":{"VM":{"1.m4.10xlarge":"40", "2.m4.4xlarge":"190"}, "mandatory":{"price":{"1":"2.2", "2":"0.847"}, "location":{"1":"North America","2":"North America"}, "OS":{"1":"Linux","2":"Linux"}}}}}' http://localhost:5000/search
+
+
+Request with MANDATORY and PRIORITY FIELD
+curl -i -H "Content-Type: application/json" -X GET -d '{"search":{"amazon":{"VM":{"1.m4.10xlarge":"40", "2.m4.4xlarge":"190"}, "mandatory":{"price":{"1":"2.2", "2":"0.847"}, "location":{"1":"North America","2":"North America"}},"priority":{"1":{"OS":{"1":"Windows", "2":"Windows"}}}}}}' http://localhost:5000/search
+
+curl -i -H "Content-Type: application/json" -X GET -d '{"search":{"amazon":{"quantity":{"1000":{"mandatory":{"price":"0.9","vCPU":"3"}}}}}}' http://localhost:5000/search
+
+curl -i -H "Content-Type: application/json" -X GET -d '{"search":{"amazon":{"quantity":{"1000":{"mandatory":{"price":"0.9","location":"Europe","vCPU":"5"}}}}}}' http://localhost:5000/search
+
+curl -i -H "Content-Type: application/json" -X GET -d '{"search":{"amazon":{"quantity":{"1000":{"mandatory":{"price":"0.9","location":"Europe","vCPU":"3"}}}}}}' http://localhost:5000/search
+
+curl -i -H "Content-Type: application/json" -X DELETE -d '{"res_attr":{"provider_id":"Microsoft" }}' http://localhost:5000/update
+
+curl -i -H "Content-Type: application/json" -X GET -d '{"search":{"Google":{"quantity":{"1000":{"mandatory":{"price":"0.9","vCPU":"3"},"priority":{"1":{"memory":"16"}}}}}}}' http://localhost:5000/search
+
+curl -i -H "Content-Type: application/json" -X PATCH -d '{"reg_req":{"name":"Google", "rating": 1400, "RD":100}}' http://localhost:5000/signup
+
+curl -i -H "Content-Type: application/json" -X PATCH -d '{"reg_req":{"name":"amazon", "rating": 1500, "RD":150}}' http://localhost:5000/signup
+
+curl -i -H "Content-Type: application/json" -X PATCH -d '{"rating":{"update":{"provider":"amazon", "rating": 1500, "RD":150}}}' http://localhost:5000/rate
+
+
+
+
+
